@@ -287,15 +287,14 @@ colnames(Dataset4) = VariableNames
 #-------------------------------------------------------------------
 
 TidyDataset = matrix(0,nrow=30*6,ncol=68)
-TidyDataset[,1] = sort(c(rep(1,30),rep(2,30),rep(3,30),rep(4,30),
-	rep(5,30),rep(6,30)))
+TidyDataset[,1] = sort(rep(1:30,6))
 TidyDataset[,2] = rep(activity_labels[,2],30)
 
 
 # Since quotes have been introduced, need to remove them.
 TidyDataset = as.data.frame(TidyDataset)
 colnames(TidyDataset) = VariableNames
-TidyDataset[1:20,1:4]
+TidyDataset[1:18,1:4]
 
 
 # Now compute averages per subject per activity per variable.
@@ -317,7 +316,8 @@ for(c in 3:68) {
 	TidyDataset[,c] = as.numeric(TidyDataset[,c])
 }
 
-write.table(TidyDataset,"Tidy Dataset.txt")
+TidyDataset[1:18,1:4]
+write.table(TidyDataset,"Tidy_Dataset.txt",row.name=FALSE)
 
 
 
